@@ -6,30 +6,51 @@ const AirInfoCard = () => {
       className="infoCard"
       style={{
         backgroundImage: "url(/images/wind.jpg)",
+        flex: "1",
       }}
     >
-      <p className="infoHeadAir">Air Info</p>
-      <p
+      <div
         style={{
-          color: "white",
+          display: "flex",
         }}
       >
-        How's the wind like?
-      </p>
+        <img
+          src="/images/snow.svg"
+          alt="wind"
+          style={{
+            width: "50px",
+            height: "50px",
+          }}
+        />
+        <div>
+          <p className="infoHeadAir">Air Info</p>
+          <p
+            style={{
+              color: "white",
+            }}
+          >
+            How's the wind like?
+          </p>
+        </div>
+      </div>
       <p className="airInfo">22 C</p>
-      <div className="infoContainer">
-        <div className="pressure">
-          <p className="infoHeading">Pressure</p>
-          <p className="infoText">800mb</p>
-        </div>
-        <div className="visibility">
-          <p className="infoHeading">Visibility</p>
-          <p className="infoText">4.3 km</p>
-        </div>
-        <div className="humidity">
-          <p className="infoHeading">Humidity</p>
-          <p className="infoText">4.3 km</p>
-        </div>
+      <div
+        style={{
+          background: "white",
+
+          padding: "20px",
+          borderRadius: "20px",
+        }}
+      >
+        <p
+          style={{
+            color: "black",
+            fontWeight: "600",
+            fontSize: "20px",
+          }}
+        >
+          Moderate Humidity
+        </p>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ const Rainfall = () => {
         width: "100%",
         height: "300px",
         backgroundImage: "url(/images/rainfall.avif)",
+        // background: "#DFF297",
         backgroundSize: "cover",
         backgroundPosition: "top right",
         borderRadius: "20px",
@@ -17,7 +18,14 @@ const Rainfall = () => {
         justifyContent: "space-between",
       }}
     >
-      <p>Tomorrow</p>
+      <p
+        style={{
+          fontSize: "18px",
+          fontWeight: "600",
+        }}
+      >
+        Tomorrow
+      </p>
       <div>
         <p
           style={{

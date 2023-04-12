@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <div className="searchContainer">
       <input type="text" placeholder="Search places" />
-      <AiOutlineSearch />
+      <AiOutlineSearch color="#F97F29" size={20} />
     </div>
   );
 };

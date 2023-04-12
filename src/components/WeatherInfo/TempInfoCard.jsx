@@ -3,8 +3,17 @@ import React from "react";
 const TempInfoCard = () => {
   return (
     <div className="infoCard">
-      <p className="infoHead">Weather</p>
-      <p>What's the weather</p>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <img src="/images/sunny.svg" alt="sunny" />
+        <div>
+          <p className="infoHead">Weather</p>
+          <p>What's the weather</p>
+        </div>
+      </div>
       <p className="degreeInfo">22 C</p>
       <div className="infoContainer">
         <div className="pressure">

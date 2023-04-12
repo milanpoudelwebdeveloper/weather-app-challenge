@@ -2,6 +2,7 @@ import React from "react";
 import "./SunInfo.css";
 import Rainfall from "../RainFall/Rainfall";
 import { BsFillSunFill } from "react-icons/bs";
+import UVInfo from "./UVInfo";
 
 const SunInfo = () => {
   return (
@@ -35,14 +36,44 @@ const SunInfo = () => {
           22 C
         </p>
       </div>
-      <div>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "40px",
+        }}
+      >
         <BsFillSunFill color="#F97F29" size={40} />
-        <p>Sun rise: </p>
-        <p>4 am</p>
-
-        <p>Sun rise: </p>
-        <p>4 am</p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "20px",
+            padding: "0 40px",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontWeight: "600",
+              }}
+            >
+              Sun rise:{" "}
+            </p>
+            <p>4 am</p>
+          </div>
+          <div>
+            <p
+              style={{
+                fontWeight: "600",
+              }}
+            >
+              Sun rise:{" "}
+            </p>
+            <p>4 am</p>
+          </div>
+        </div>
       </div>
+      <UVInfo />
       <Rainfall />
     </div>
   );
