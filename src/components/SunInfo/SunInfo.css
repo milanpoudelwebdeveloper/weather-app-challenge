@@ -1,3 +1,15 @@
 .sunInfo {
   display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+  padding: 40px;
+  max-height: 100vh;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.topInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }

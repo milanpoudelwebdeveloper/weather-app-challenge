@@ -3,18 +3,20 @@ import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
 import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
 import SunInfo from "./components/SunInfo/SunInfo";
+import ExtendedForecast from "./components/ExtendedForecast/ExtendedForecast";
 
 function App() {
   return (
     <div className="container">
+      <NavBar />
       <div
         style={{
           display: "flex",
         }}
       >
         <div>
-          <NavBar />
           <WeatherInfo />
+          <ExtendedForecast />
         </div>
         <SunInfo />
       </div>
