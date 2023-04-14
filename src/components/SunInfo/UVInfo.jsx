@@ -1,7 +1,27 @@
 import React from "react";
 import { BsFillSunFill } from "react-icons/bs";
 
-const UVInfo = () => {
+const UVInfo = ({ weatherData }) => {
+  let uviValue = weatherData?.uvi?.toFixed(1) || 0;
+  let uviDesc = "No Info Available";
+
+  switch (uviValue) {
+    case uviValue < 3:
+      uviDesc = "Low";
+      break;
+    case uviValue >= 3 && uviValue < 6:
+      uviDesc = "Moderate";
+      break;
+    case uviValue >= 6 && uviValue < 8:
+      uviDesc = "High";
+      break;
+    case uviValue >= 8 && uviValue < 11:
+      uviDesc = "Very High";
+      break;
+    default:
+      uviDesc = "No Info Available";
+  }
+
   return (
     <div
       style={{
@@ -25,14 +45,14 @@ const UVInfo = () => {
             fontSize: "18px",
           }}
         >
-          20 UV
+          {weatherData?.uvi?.toFixed(1) || 0} UVI index
         </p>
         <p
           style={{
             fontSize: "14px",
           }}
         >
-          Moderate risk from UV rays
+          {uviDesc}
         </p>
       </div>
     </div>

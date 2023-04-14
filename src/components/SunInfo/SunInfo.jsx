@@ -4,7 +4,16 @@ import Rainfall from "../RainFall/Rainfall";
 import { BsFillSunFill } from "react-icons/bs";
 import UVInfo from "./UVInfo";
 
-const SunInfo = () => {
+const SunInfo = ({ weatherData }) => {
+  const getFormattedTime = (timeStamp) => {
+    const date = new Date(timeStamp * 1000);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    return `${hours}:${minutes}:${seconds}`;
+  };
+
   return (
     <div className="sunInfo">
       <div className="topInfo">
@@ -59,7 +68,7 @@ const SunInfo = () => {
             >
               Sun rise:{" "}
             </p>
-            <p>4 am</p>
+            <p>{getFormattedTime(weatherData?.sys?.sunrise)}</p>
           </div>
           <div>
             <p
@@ -67,13 +76,13 @@ const SunInfo = () => {
                 fontWeight: "600",
               }}
             >
-              Sun rise:{" "}
+              Sun set:{" "}
             </p>
-            <p>4 am</p>
+            <p>{getFormattedTime(weatherData?.sys?.sunset)}</p>
           </div>
         </div>
       </div>
-      <UVInfo />
+      <UVInfo weatherData={weatherData} />
       <Rainfall />
     </div>
   );

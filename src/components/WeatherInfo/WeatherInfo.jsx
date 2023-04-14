@@ -3,11 +3,11 @@ import "./WeatherInfo.css";
 import TempInfoCard from "./TempInfoCard";
 import AirInfoCard from "./AirInfoCard";
 
-const WeatherInfo = () => {
+const WeatherInfo = ({ weatherData }) => {
   return (
     <div className="weatherInfo">
-      <TempInfoCard />
-      <AirInfoCard />
+      <TempInfoCard weatherData={weatherData} />
+      <AirInfoCard weatherData={weatherData} />
     </div>
   );
 };

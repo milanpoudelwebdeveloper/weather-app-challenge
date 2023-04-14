@@ -1,6 +1,6 @@
 import React from "react";
 
-const AirInfoCard = () => {
+const AirInfoCard = ({ weatherData }) => {
   return (
     <div
       className="infoCard"
@@ -33,7 +33,7 @@ const AirInfoCard = () => {
           </p>
         </div>
       </div>
-      <p className="airInfo">22 C</p>
+      <p className="airInfo">{weatherData?.main.pressure}</p>
       <div
         style={{
           background: "white",
@@ -49,7 +49,7 @@ const AirInfoCard = () => {
             fontSize: "20px",
           }}
         >
-          Moderate Humidity
+          Wind Speed: {weatherData?.wind?.speed} km/h
         </p>
       </div>
     </div>

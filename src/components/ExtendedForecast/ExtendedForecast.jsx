@@ -1,6 +1,28 @@
 import React from "react";
+import { useEffect } from "react";
+import { axiosInstance } from "../../axiosConfig";
 
 const ExtendedForecast = () => {
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      axiosInstance
+        .get(
+          "forecast/daily?lat=" +
+            position.coords.latitude +
+            "&lon=" +
+            position.coords.longitude +
+            "&cnt=7" +
+            "&appid=" +
+            import.meta.env.VITE_API_KEY
+        )
+        .then((res) => {
+          console.log("hey daily forestcast is", res.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    });
+  }, []);
   return (
     <div
       style={{
