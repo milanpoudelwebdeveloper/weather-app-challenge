@@ -40,14 +40,17 @@ const Details = () => {
   return (
     <div className="container">
       <NavBar />
-      {loading ? <Spinner /> : null}
-      <div className="parentWrapper">
-        <div>
-          <DetailCards weatherData={weatherData} />
-          <ExtendedForecast locationKey={place} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="parentWrapper">
+          <div>
+            <DetailCards weatherData={weatherData} />
+            <ExtendedForecast locationKey={place} />
+          </div>
+          <CountryInfo weatherData={weatherData} placeName={placeName} />
         </div>
-        <CountryInfo weatherData={weatherData} placeName={placeName} />
-      </div>
+      )}
     </div>
   );
 };
