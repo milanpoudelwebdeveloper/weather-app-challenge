@@ -27,8 +27,8 @@ const UVInfo = ({ weatherData }) => {
     <div className="uv-info">
       <BsFillSunFill color="#F97F29" size={30} />
       <div>
-        <p>{weatherData?.uvi?.toFixed(1) || 0} UVI index</p>
-        <p className="uvDesc">{uviDesc}</p>
+        <p>{weatherData?.UVIndex || 0} UVI index</p>
+        <p className="uvDesc">{weatherData?.UVIndexText} Range of UV</p>
       </div>
     </div>
   );

@@ -69,3 +69,9 @@
   border-bottom: 1px solid #ccc;
   padding: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .avatarContainer p {
+    display: none;
+  }
+}

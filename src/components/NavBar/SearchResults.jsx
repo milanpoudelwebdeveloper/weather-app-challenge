@@ -1,19 +1,25 @@
 import React from "react";
 import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
 
-const SearchResults = ({ searchResults, setLocation }) => {
-  const selectLocation = (result) => {
-    setLocation((prev) => ({
-      ...prev,
-      longitute: result?.lon,
-      latitude: result?.lat,
-    }));
+const SearchResults = ({ searchResults }) => {
+  const navigate = useNavigate();
+
+  const goToDetails = (result) => {
+    navigate(
+      "/details?placeKey=" + result?.Key + "&placeName=" + result?.LocalizedName
+    );
   };
+
   return (
     <div className="resultsContainer">
       {searchResults?.map((result) => (
-        <div className="resultCard" onClick={() => selectLocation(result)}>
-          {result?.display_name}
+        <div
+          key={result?.key}
+          className="resultCard"
+          onClick={() => goToDetails(result)}
+        >
+          {result?.LocalizedName}
         </div>
       ))}
     </div>

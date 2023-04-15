@@ -1,0 +1,19 @@
+.extended-forecast {
+  background: #f7f7f7;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.extended-forecast .day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.forecast-items {
+  display: flex;
+  gap: 80px;
+  margin-top: 40px;
+}

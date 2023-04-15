@@ -3,8 +3,9 @@ import "./NavBar.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import SearchResults from "./SearchResults";
 import { axiosInstance } from "../../axiosConfig";
+import { Link } from "react-router-dom";
 
-const NavBar = ({ setLocation }) => {
+const NavBar = () => {
   const [input, setInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -13,9 +14,10 @@ const NavBar = ({ setLocation }) => {
       if (input.length > 0) {
         axiosInstance
           .get(
-            `https://nominatim.openstreetmap.org/search?q=${input}&format=json&addressdetails=1&limit=4`
+            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=bKsUpZYLAYXff9qYXBAcIVEfIWvN8cZY&q=${input}`
           )
           .then((res) => {
+            console.log("the places list are", res.data);
             setSearchResults(res.data);
           });
       }
@@ -24,13 +26,15 @@ const NavBar = ({ setLocation }) => {
 
   return (
     <nav className="navContainer">
-      <div className="avatarContainer">
-        <img src="images/avatar.png" alt="avatar" className="avatarImg" />
-        <p>
-          <span>Hello,</span>
-          Good Morning
-        </p>
-      </div>
+      <Link to="/">
+        <div className="avatarContainer">
+          <img src="images/avatar.webp" alt="avatar" className="avatarImg" />
+          <p>
+            <span>Hello,</span>
+            Good Morning
+          </p>
+        </div>
+      </Link>
 
       <div className="searchContainer">
         <input
@@ -40,12 +44,7 @@ const NavBar = ({ setLocation }) => {
           value={input}
         />
         <AiOutlineSearch color="#F97F29" size={20} />
-        {input && (
-          <SearchResults
-            searchResults={searchResults}
-            setLocation={setLocation}
-          />
-        )}
+        {input && <SearchResults searchResults={searchResults} />}
       </div>
     </nav>
   );

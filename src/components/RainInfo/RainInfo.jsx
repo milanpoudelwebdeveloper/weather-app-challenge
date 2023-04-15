@@ -1,12 +1,13 @@
 import React from "react";
 import "./RainInfo.css";
 
-const RainInfo = () => {
+const RainInfo = ({ weatherData }) => {
+  const chanceOfRain = weatherData?.HasPrecipitation || false;
   return (
     <div className="rainInfo">
-      <p>Tomorrow</p>
+      <p>Today</p>
       <div>
-        <p>Moderate</p>
+        <p>{chanceOfRain ? "Chance of" : "Less chance of"}</p>
         <p>Rainfall</p>
       </div>
     </div>

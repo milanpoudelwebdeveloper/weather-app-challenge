@@ -1,0 +1,56 @@
+.detailCards {
+  background: rgb(247, 240, 254);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.detailCards h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.gridItem {
+  background: white;
+  padding: 20px;
+  height: max-content;
+}
+
+.gridItem .itemValue {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.gridItem .itemUnit {
+  margin-top: 40px;
+}
+
+@media (max-width: 992px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detailCards {
+    padding: 20px;
+  }
+
+  .detailCards h2 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1280px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .detailCards {
+    padding: 20px;
+  }
+}

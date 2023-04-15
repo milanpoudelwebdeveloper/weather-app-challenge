@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   background: #f7f7f7;
-  padding: 40px;
-  max-height: 100vh;
   width: 100%;
   justify-content: space-between;
-  margin-left: 20px;
-  margin-top: 40px;
   border-radius: 20px;
+  padding: 20px;
+}
+
+.place-name {
+  font-size: 16px;
 }
 
 .topInfo {
@@ -19,6 +20,20 @@
 
 .topInfo p:first-child {
   font-size: 16px;
+  font-weight: 600;
+}
+
+.info-container {
+  margin-top: 10px;
+}
+
+.time-text {
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.time {
+  font-size: 20px;
   font-weight: 600;
 }
 

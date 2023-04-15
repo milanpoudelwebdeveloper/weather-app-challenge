@@ -1,15 +1,16 @@
 .weatherInfo {
-  margin-top: 40px;
   display: flex;
   gap: 40px;
   width: 100%;
-  margin-bottom: 40px;
+}
+
+.labelText {
+  display: flex;
 }
 
 .infoCard {
   display: flex;
   flex-direction: column;
-
   width: 50%;
   height: 300px;
   background-image: url("/images/sky.avif");
@@ -41,17 +42,11 @@
 .airInfo {
   color: white;
 }
-.pressure {
-  background: black;
-  max-width: max-content;
-  color: white;
-  padding: 16px 25px;
-  border-radius: 16px;
-}
 
 .infoContainer {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 25px;
   text-align: center;
 }
@@ -66,20 +61,24 @@
   font-weight: 600;
 }
 
-.visibility {
-  background: #dff297;
+.infoContainer div {
   max-width: max-content;
-  color: black;
   padding: 16px 25px;
   border-radius: 16px;
+}
+.pressure {
+  background: black;
+  color: white;
+}
+
+.visibility {
+  background: #dff297;
+  color: black;
 }
 
 .humidity {
   background: white;
-  max-width: max-content;
   color: black;
-  padding: 16px 25px;
-  border-radius: 16px;
 }
 
 .windInfo {
@@ -93,4 +92,36 @@
   color: black;
   font-weight: 600;
   font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .infoCard {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .infoText {
+    font-size: 14px;
+  }
+
+  .infoContainer div {
+    padding: 20px 14px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .infoCard {
+    width: 100%;
+    padding: 20px;
+  }
+  .weatherInfo {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .infoContainer div {
+    padding: 20px 30px;
+  }
 }

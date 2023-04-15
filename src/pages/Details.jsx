@@ -1,55 +1,48 @@
-import "./App.css";
-import NavBar from "./components/NavBar/NavBar";
-import "./App.css";
-import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
-import SunInfo from "./components/SunInfo/SunInfo";
-import ExtendedForecast from "./components/ExtendedForecast/ExtendedForecast";
-import { useEffect, useState } from "react";
-import { axiosInstance } from "./axiosConfig";
-import Details from "../components/Details/Details";
+import React, { useEffect, useState } from "react";
+import NavBar from "../components/NavBar/NavBar";
+import SunInfo from "../components/SunInfo/SunInfo";
+import ExtendedForecast from "../components/ExtendedForecast/ExtendedForecast";
+import { useLocation } from "react-router";
+import { axiosInstance } from "../axiosConfig";
+import DetailCards from "../components/Details/DetailCards";
 
-function App() {
+const Details = () => {
+  const place = new URLSearchParams(useLocation().search).get("placeKey");
+  const placeName = new URLSearchParams(useLocation().search).get("placeName");
   const [weatherData, setWeatherData] = useState(null);
-  const [location, setLocation] = useState({
-    longitude: 85.30014,
-    latitude: 27.700769,
-  });
+
+  const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    getWeatherData(location.longitude, location.latitude);
-  }, [location]);
+    if (place) {
+      getWeatherData(place);
+    }
+  }, [place]);
 
-  const getWeatherData = (longitude = 0, latitude = 0) => {
-    axiosInstance
-      .get(
-        "weather?lat=" +
-          latitude +
-          "&lon=" +
-          longitude +
-          "&appid=" +
-          import.meta.env.VITE_API_KEY
-      )
-      .then((res) => {
-        setWeatherData(res.data);
-        console.log("hey weather data is", res.data);
-      })
-      .catch((e) => {
-        console.log("Something went wrong", e);
-      });
+  const getWeatherData = async (locationKey) => {
+    try {
+      const weatherResponse = await axiosInstance.get(
+        `/currentconditions/v1/${locationKey}?apikey=${apiKey}&details=true`
+      );
+      const weatherData = weatherResponse.data;
+      setWeatherData(weatherData[0]);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="container">
-      <NavBar setLocation={setLocation} />
+      <NavBar />
       <div className="parentWrapper">
         <div>
-          <Details />
-          <ExtendedForecast weatherData={weatherData} />
+          <DetailCards weatherData={weatherData} />
+          <ExtendedForecast locationKey={place} />
         </div>
-        <SunInfo weatherData={weatherData} />
+        <SunInfo weatherData={weatherData} placeName={placeName} />
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Details;
