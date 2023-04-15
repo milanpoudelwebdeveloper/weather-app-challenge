@@ -6,10 +6,14 @@ import UVInfo from "./UVInfo";
 
 const CountryInfo = ({ weatherData, placeName }) => {
   const getFormattedTime = (timeStamp) => {
-    const date = new Date(timeStamp);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${hours}:${minutes}`;
+    const dateObj = new Date(timeStamp);
+    const hours = dateObj.getHours();
+    const minutes = dateObj.getMinutes();
+
+    // Format the time as HH:MM:SS
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (

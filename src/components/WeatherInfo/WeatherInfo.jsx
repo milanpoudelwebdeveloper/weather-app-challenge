@@ -5,7 +5,6 @@ import { UnitContext } from "../../Context/UnitContextProvider";
 
 const WeatherInfo = ({ weatherData }) => {
   const { selectedUnit } = useContext(UnitContext);
-  console.log("the selected unit is: ", selectedUnit);
   const responseType = selectedUnit === units[0] ? "Metric" : "Imperial";
   const degreeType = selectedUnit === units[0] ? "C" : "F";
   return (
