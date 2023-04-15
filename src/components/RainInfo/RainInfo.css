@@ -1,0 +1,23 @@
+.rainInfo {
+  width: "100%";
+  height: 300px;
+  background-image: url("/images/rainfall.avif");
+  background-size: cover;
+  background-position: top right;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rainInfo p:first-child {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rainInfo:nth-child(2) p {
+  font-size: 20px;
+  font-weight: 600;
+}

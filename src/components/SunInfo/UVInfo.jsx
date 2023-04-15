@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillSunFill } from "react-icons/bs";
+import "./SunInfo.css";
 
 const UVInfo = ({ weatherData }) => {
   let uviValue = weatherData?.uvi?.toFixed(1) || 0;
@@ -23,37 +24,11 @@ const UVInfo = ({ weatherData }) => {
   }
 
   return (
-    <div
-      style={{
-        background: "#1A283E",
-        display: "flex",
-        borderRadius: "20px",
-        padding: "20px",
-        alignItems: "center",
-        gap: "20px",
-        margin: "30px 0",
-      }}
-    >
+    <div className="uv-info">
       <BsFillSunFill color="#F97F29" size={30} />
-      <div
-        style={{
-          color: "#fff",
-        }}
-      >
-        <p
-          style={{
-            fontSize: "18px",
-          }}
-        >
-          {weatherData?.uvi?.toFixed(1) || 0} UVI index
-        </p>
-        <p
-          style={{
-            fontSize: "14px",
-          }}
-        >
-          {uviDesc}
-        </p>
+      <div>
+        <p>{weatherData?.uvi?.toFixed(1) || 0} UVI index</p>
+        <p className="uvDesc">{uviDesc}</p>
       </div>
     </div>
   );

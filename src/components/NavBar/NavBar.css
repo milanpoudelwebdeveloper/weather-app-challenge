@@ -1,6 +1,6 @@
 .navContainer {
   display: flex;
-  gap: 600px;
+  justify-content: space-between;
   margin-top: 30px;
 }
 
@@ -19,12 +19,28 @@
   objectfit: cover;
 }
 
+.navContainer p {
+  font-size: 18px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.navContainer span {
+  display: block;
+  font-weight: 500;
+}
+
 .searchContainer {
   background: #f7f7f7;
   display: flex;
   max-height: 40px;
   align-items: center;
   border-radius: 10px;
+  width: 300px;
+}
+
+.searchContainer div {
+  position: relative;
 }
 
 .searchContainer input {
@@ -34,4 +50,22 @@
   width: 100%;
   font-size: 18px;
   font-weight: 500;
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  border-radius: 20px;
+  background: #f7f7f7;
+  padding: 10px;
+  overflow-y: auto;
+  height: 400px;
+  width: 300px;
+}
+
+.resultCard {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
 }

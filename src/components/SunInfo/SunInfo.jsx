@@ -1,6 +1,6 @@
 import React from "react";
 import "./SunInfo.css";
-import Rainfall from "../RainFall/Rainfall";
+import RainInfo from "../RainInfo/RainInfo";
 import { BsFillSunFill } from "react-icons/bs";
 import UVInfo from "./UVInfo";
 
@@ -18,72 +18,27 @@ const SunInfo = ({ weatherData }) => {
     <div className="sunInfo">
       <div className="topInfo">
         <div>
-          <p
-            style={{
-              fontSize: "16px",
-              fontWeight: "600",
-            }}
-          >
-            Sun
-          </p>
-          <p
-            style={{
-              fontSize: "14px",
-            }}
-          >
-            Kathmandu, Nepal
-          </p>
+          <p>Sun</p>
+          <p>Kathmandu, Nepal</p>
         </div>
 
-        <p
-          style={{
-            color: "#F97F29",
-            fontSize: "30px",
-            fontWeight: "600",
-          }}
-        >
-          22 C
-        </p>
+        <p className="temp">22 C</p>
       </div>
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "40px",
-        }}
-      >
+      <div className="sunInfoWrapper">
         <BsFillSunFill color="#F97F29" size={40} />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "20px",
-            padding: "0 40px",
-          }}
-        >
+        <div className="headingWrapper">
           <div>
-            <p
-              style={{
-                fontWeight: "600",
-              }}
-            >
-              Sun rise:{" "}
-            </p>
+            <p className="heading">Sun rise: </p>
             <p>{getFormattedTime(weatherData?.sys?.sunrise)}</p>
           </div>
           <div>
-            <p
-              style={{
-                fontWeight: "600",
-              }}
-            >
-              Sun set:{" "}
-            </p>
+            <p className="heading">Sun set: </p>
             <p>{getFormattedTime(weatherData?.sys?.sunset)}</p>
           </div>
         </div>
       </div>
       <UVInfo weatherData={weatherData} />
-      <Rainfall />
+      <RainInfo />
     </div>
   );
 };

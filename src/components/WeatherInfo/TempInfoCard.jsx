@@ -1,7 +1,6 @@
 import React from "react";
 
 const TempInfoCard = ({ weatherData }) => {
-  console.log("the weather data is: ", weatherData);
   return (
     <div className="infoCard">
       <div
@@ -15,7 +14,8 @@ const TempInfoCard = ({ weatherData }) => {
           <p>What's the weather</p>
         </div>
       </div>
-      <p className="degreeInfo">{weatherData?.main?.temp}</p>
+      <h1>{weatherData?.main?.temp}</h1>
+      <p>{weatherData?.weather[0]?.main}</p>
       <div className="infoContainer">
         <div className="pressure">
           <p className="infoHeading">Pressure</p>

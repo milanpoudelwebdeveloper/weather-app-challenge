@@ -1,33 +1,40 @@
 .weatherInfo {
   margin-top: 40px;
   display: flex;
-  gap: 20px;
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .infoCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: max-content;
+
+  width: 50%;
   height: 300px;
-  background-image: url("/images/sky.jpg");
+  background-image: url("/images/sky.avif");
   background-size: cover;
   background-position: top right;
   border-radius: 30px;
   padding: 40px;
 }
 
-.infoHead,
-.infoHeadAir {
-  font-size: 18px;
-  font-weight: 600;
+.infoCard h1 {
+  margin-top: 30px;
+  font-size: 30px;
 }
 
-.degreeInfo,
 .airInfo {
-  font-size: 32px;
-  font-weight: 700;
-  margin-top: 14px;
+  background-image: url("/images/wind.jpg");
+}
+
+.airInfo div:first-child {
+  display: flex;
+}
+
+.infoIcon {
+  width: 50px;
+  height: 50px;
 }
 
 .infoHeadAir,
@@ -73,4 +80,17 @@
   color: black;
   padding: 16px 25px;
   border-radius: 16px;
+}
+
+.windInfo {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.windInfo p {
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
 }
