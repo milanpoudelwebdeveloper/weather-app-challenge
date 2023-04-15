@@ -5,7 +5,7 @@ import "./ExtendedForecast.css";
 import IconProvider from "./IconProvider";
 import { units } from "../../constants/weatherInfo";
 import { toast } from "react-toastify";
-import { UnitContext } from "../Context/unitContextProvider";
+import { UnitContext } from "../../Context/UnitContextProvider";
 
 const daysOfWeek = [
   "Sunday",

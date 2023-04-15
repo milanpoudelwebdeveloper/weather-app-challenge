@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./UnitType.css";
 import { units } from "../../constants/weatherInfo";
-import { UnitContext } from "../Context/unitContextProvider";
+import { UnitContext } from "../../Context/UnitContextProvider";
 
 const UnitType = () => {
   const { selectedUnit, changeUnit } = useContext(UnitContext);

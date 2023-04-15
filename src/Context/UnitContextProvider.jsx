@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { units } from "../../constants/weatherInfo";
+import { units } from "../constants/weatherInfo";
 
 const initialState = {
   selectedUnit: units[0],
