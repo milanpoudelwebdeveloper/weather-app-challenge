@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { axiosInstance } from "../../axiosConfig";
 import "./ExtendedForecast.css";
 import IconProvider from "./IconProvider";
 import { units } from "../../constants/weatherInfo";
 import { toast } from "react-toastify";
+import { unitContext } from "../Context/unitContextProvider";
 
 const daysOfWeek = [
   "Sunday",
@@ -16,12 +17,13 @@ const daysOfWeek = [
   "Saturday",
 ];
 
-const ExtendedForecast = ({ locationKey, unit }) => {
+const ExtendedForecast = ({ locationKey }) => {
   const [extendedForecast, setExtendedForecast] = useState([]);
+  const { selectedUnit } = useContext(unitContext);
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const responseType = unit === units[0] ? "true" : "false";
-  const degreeType = unit === units[0] ? "C" : "F";
+  const responseType = selectedUnit === units[0] ? "true" : "false";
+  const degreeType = selectedUnit === units[0] ? "C" : "F";
 
   const getDay = (date) => {
     const day = new Date(date).getDay();

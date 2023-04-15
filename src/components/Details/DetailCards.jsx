@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Details.css";
+import { unitContext } from "../Context/unitContextProvider";
+import { units } from "../../constants/weatherInfo";
 
 const DetailCards = ({ weatherData }) => {
+  const { selectedUnit } = useContext(unitContext);
+
+  const unitType = selectedUnit === units[0] ? "Metric" : "Imperial";
   const details = [
     {
       id: "1",
       title: "Temperature",
-      value: weatherData?.Temperature?.Metric?.Value || 0,
-      unit: weatherData?.Temperature?.Metric?.Unit || "C",
+      value: weatherData?.Temperature?.[unitType]?.Value || 0,
+      unit: weatherData?.Temperature?.[unitType]?.Unit || "C",
     },
     {
       id: "2",
@@ -36,8 +41,8 @@ const DetailCards = ({ weatherData }) => {
     {
       id: "6",
       title: "Dew Point",
-      value: weatherData?.DewPoint?.Metric?.Value || 0,
-      unit: weatherData?.DewPoint?.Metric?.Unit || "C",
+      value: weatherData?.DewPoint?.[unitType]?.Value || 0,
+      unit: weatherData?.DewPoint?.[unitType]?.Unit || "C",
     },
   ];
   return (

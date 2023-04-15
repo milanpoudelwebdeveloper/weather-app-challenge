@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./UnitType.css";
 import { units } from "../../constants/weatherInfo";
+import { unitContext } from "../Context/unitContextProvider";
 
-const UnitType = ({ changeUnit, selectedUnit }) => {
+const UnitType = () => {
+  const { selectedUnit, changeUnit } = useContext(unitContext);
   return (
     <div className="unit-container">
       {units?.map((unit) => (
