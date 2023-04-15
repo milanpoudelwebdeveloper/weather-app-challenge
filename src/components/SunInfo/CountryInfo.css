@@ -9,14 +9,17 @@
   height: max-content;
 }
 
-.place-name {
-  font-size: 16px;
-}
-
 .topInfo {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  width: 100%;
+}
+
+.place-name {
+  font-size: 16px;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .topInfo p:first-child {

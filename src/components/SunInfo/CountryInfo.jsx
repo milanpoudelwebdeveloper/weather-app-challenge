@@ -18,8 +18,6 @@ const CountryInfo = ({ weatherData, placeName }) => {
         <div>
           <p className="place-name">{placeName}</p>
         </div>
-
-        <p className="temp">{weatherData?.Temperature.Metric.Value} &deg; C</p>
       </div>
       <div className="sunInfoWrapper">
         <BsFillSunFill color="#F97F29" size={40} />

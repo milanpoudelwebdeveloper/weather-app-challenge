@@ -1,7 +1,10 @@
 import React from "react";
 import "./WeatherInfo.css";
+import { units } from "../../constants/weatherInfo";
 
-const WeatherInfo = ({ weatherData }) => {
+const WeatherInfo = ({ weatherData, unit }) => {
+  const responseType = unit === units[0] ? "Metric" : "Imperial";
+  const degreeType = unit === units[0] ? "C" : "F";
   return (
     <div className="weatherInfo">
       <div className="infoCard">
@@ -12,7 +15,9 @@ const WeatherInfo = ({ weatherData }) => {
             <p>What's the weather</p>
           </div>
         </div>
-        <h1>{weatherData?.Temperature["Metric"]?.Value}&deg; C</h1>
+        <h1>
+          {weatherData?.Temperature[responseType]?.Value}&deg; {degreeType}
+        </h1>
         <p>{weatherData?.WeatherText}</p>
         <div className="infoContainer">
           <div className="pressure">

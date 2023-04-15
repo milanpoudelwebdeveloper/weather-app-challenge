@@ -7,8 +7,10 @@ import { axiosInstance } from "../axiosConfig";
 import CountryInfo from "../components/SunInfo/CountryInfo";
 import { toast } from "react-toastify";
 import Spinner from "../components/Common/Spinner";
+import { units } from "../constants/weatherInfo";
 
 const Home = () => {
+  const [unit, setUnit] = useState(units[0]);
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [locationKey, setLocationKey] = useState("");
@@ -47,14 +49,21 @@ const Home = () => {
     }
   };
 
+  const changeUnit = () => {
+    if (unit === units[0]) {
+      setUnit(units[1]);
+    } else {
+      setUnit(units[0]);
+    }
+  };
   return (
     <div className="container">
-      <NavBar />
+      <NavBar changeUnit={changeUnit} selectedUnit={unit} />
       {loading ? <Spinner /> : null}
       <div className="parentWrapper">
-        <div>
-          <WeatherInfo weatherData={weatherData} />
-          <ExtendedForecast locationKey={locationKey} />
+        <div className="mainContainer">
+          <WeatherInfo weatherData={weatherData} unit={unit} />
+          <ExtendedForecast locationKey={locationKey} unit={unit} />
         </div>
         <CountryInfo weatherData={weatherData} placeName={placeName} />
       </div>

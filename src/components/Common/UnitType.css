@@ -1,0 +1,39 @@
+.unit-container {
+  position: absolute;
+  right: 400px;
+  top: 5px;
+  color: #1a1a1a;
+  z-index: 10;
+}
+
+.unit-button {
+  background: #f7f7f7;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.unit-button.selected {
+  color: white;
+  background: #1a1a1a;
+}
+
+@media screen and (max-width: 767px) {
+  .unit-container {
+    width: 100%;
+    right: 0;
+    position: static;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .unit-button {
+    width: 35px;
+    height: 35px;
+    font-size: 11px;
+  }
+}

@@ -11,6 +11,10 @@
   padding: 40px 0px;
 }
 
+.mainContainer {
+  position: relative;
+}
+
 @media (max-width: 768px) {
   .parentWrapper {
     grid-template-columns: 1fr;

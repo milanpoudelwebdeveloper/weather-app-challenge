@@ -4,8 +4,9 @@ import { AiOutlineSearch } from "react-icons/ai";
 import SearchResults from "./SearchResults";
 import { axiosInstance } from "../../axiosConfig";
 import { Link } from "react-router-dom";
+import UnitType from "../Common/UnitType";
 
-const NavBar = () => {
+const NavBar = ({ changeUnit, selectedUnit }) => {
   const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
@@ -44,31 +45,34 @@ const NavBar = () => {
 
   return (
     <nav className="navContainer" onClick={closeSearchResults}>
-      <Link to="/">
-        <div className="avatarContainer">
-          <img src="images/avatar.webp" alt="avatar" className="avatarImg" />
-          <p>
-            <span>Hello,</span>
-            {greetings()}
-          </p>
-        </div>
-      </Link>
+      <div className="wrapper">
+        <Link to="/">
+          <div className="avatarContainer">
+            <img src="images/avatar.webp" alt="avatar" className="avatarImg" />
+            <p>
+              <span>Hello,</span>
+              {greetings()}
+            </p>
+          </div>
+        </Link>
 
-      <div className="searchContainer">
-        <input
-          type="text"
-          placeholder="Search places"
-          onChange={(e) => setInput(e.target.value)}
-          value={input}
-        />
-        <AiOutlineSearch color="#F97F29" size={20} />
-        {input && open && (
-          <SearchResults
-            searchResults={searchResults}
-            closeSearchResults={closeSearchResults}
+        <div className="searchContainer">
+          <input
+            type="text"
+            placeholder="Search places"
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
           />
-        )}
+          <AiOutlineSearch color="#F97F29" size={20} />
+          {input && open && (
+            <SearchResults
+              searchResults={searchResults}
+              closeSearchResults={closeSearchResults}
+            />
+          )}
+        </div>
       </div>
+      <UnitType changeUnit={changeUnit} selectedUnit={selectedUnit} />
     </nav>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { axiosInstance } from "../../axiosConfig";
 import "./ExtendedForecast.css";
 import IconProvider from "./IconProvider";
+import { units } from "../../constants/weatherInfo";
 
 const daysOfWeek = [
   "Sunday",
@@ -14,9 +15,12 @@ const daysOfWeek = [
   "Saturday",
 ];
 
-const ExtendedForecast = ({ locationKey }) => {
+const ExtendedForecast = ({ locationKey, unit }) => {
   const [extendedForecast, setExtendedForecast] = useState([]);
   const apiKey = import.meta.env.VITE_API_KEY;
+
+  const responseType = unit === units[0] ? "true" : "false";
+  const degreeType = unit === units[0] ? "C" : "F";
 
   const getDay = (date) => {
     const day = new Date(date).getDay();
@@ -27,7 +31,7 @@ const ExtendedForecast = ({ locationKey }) => {
     if (locationKey) {
       axiosInstance
         .get(
-          `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&metric=true`
+          `/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&metric=${responseType}`
         )
         .then((res) => {
           setExtendedForecast(res.data.DailyForecasts);
@@ -37,7 +41,7 @@ const ExtendedForecast = ({ locationKey }) => {
           console.log("something went wrong while getting data", e);
         });
     }
-  }, [locationKey]);
+  }, [locationKey, responseType]);
 
   return (
     <div className="extended-forecast">
@@ -49,7 +53,9 @@ const ExtendedForecast = ({ locationKey }) => {
               <IconProvider iconNumber={forecast?.Day?.Icon} />
               <h3>{getDay(forecast?.Date)}</h3>
               <p className="description">{forecast?.Day?.IconPhrase}</p>
-              <p>{forecast?.Temperature?.Maximum?.Value} &deg; C</p>
+              <p>
+                {forecast?.Temperature?.Maximum?.Value} &deg; {degreeType}
+              </p>
             </div>
           );
         })}
