@@ -25,7 +25,7 @@
 .avatarImg {
   width: 40px;
   height: 40px;
-  objectfit: cover;
+  object-fit: cover;
 }
 
 .navContainer p {

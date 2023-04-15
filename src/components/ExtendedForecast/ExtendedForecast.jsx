@@ -5,7 +5,7 @@ import "./ExtendedForecast.css";
 import IconProvider from "./IconProvider";
 import { units } from "../../constants/weatherInfo";
 import { toast } from "react-toastify";
-import { unitContext } from "../Context/unitContextProvider";
+import { UnitContext } from "../Context/unitContextProvider";
 
 const daysOfWeek = [
   "Sunday",
@@ -19,7 +19,7 @@ const daysOfWeek = [
 
 const ExtendedForecast = ({ locationKey }) => {
   const [extendedForecast, setExtendedForecast] = useState([]);
-  const { selectedUnit } = useContext(unitContext);
+  const { selectedUnit } = useContext(UnitContext);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   const responseType = selectedUnit === units[0] ? "true" : "false";

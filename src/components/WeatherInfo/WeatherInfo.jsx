@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import "./WeatherInfo.css";
 import { units } from "../../constants/weatherInfo";
-import { unitContext } from "../Context/unitContextProvider";
+import { UnitContext } from "../Context/unitContextProvider";
 
 const WeatherInfo = ({ weatherData }) => {
-  const { selectedUnit } = useContext(unitContext);
+  const { selectedUnit } = useContext(UnitContext);
   console.log("the selected unit is: ", selectedUnit);
   const responseType = selectedUnit === units[0] ? "Metric" : "Imperial";
   const degreeType = selectedUnit === units[0] ? "C" : "F";

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import "./Details.css";
-import { unitContext } from "../Context/unitContextProvider";
 import { units } from "../../constants/weatherInfo";
+import { UnitContext } from "../Context/unitContextProvider";
 
 const DetailCards = ({ weatherData }) => {
-  const { selectedUnit } = useContext(unitContext);
+  const { selectedUnit } = useContext(UnitContext);
 
   const unitType = selectedUnit === units[0] ? "Metric" : "Imperial";
   const details = [

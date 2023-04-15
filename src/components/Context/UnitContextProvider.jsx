@@ -6,7 +6,7 @@ const initialState = {
   changeUnit: () => {},
 };
 
-export const unitContext = createContext(initialState);
+export const UnitContext = createContext(initialState);
 
 const UnitContextProvider = ({ children }) => {
   const [selectedUnit, setSelectedUnit] = useState(initialState.selectedUnit);
@@ -20,14 +20,14 @@ const UnitContextProvider = ({ children }) => {
   };
 
   return (
-    <unitContext.Provider
+    <UnitContext.Provider
       value={{
         selectedUnit,
         changeUnit,
       }}
     >
       {children}
-    </unitContext.Provider>
+    </UnitContext.Provider>
   );
 };
 
