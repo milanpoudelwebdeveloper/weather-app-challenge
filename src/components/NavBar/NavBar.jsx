@@ -5,6 +5,7 @@ import SearchResults from "./SearchResults";
 import { axiosInstance } from "../../axiosConfig";
 import { Link } from "react-router-dom";
 import UnitType from "../Common/UnitType";
+import { toast } from "react-toastify";
 
 const NavBar = ({ changeUnit, selectedUnit }) => {
   const [input, setInput] = useState("");
@@ -31,8 +32,13 @@ const NavBar = ({ changeUnit, selectedUnit }) => {
         axiosInstance
           .get(`/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${input}`)
           .then((res) => {
-            console.log("the places list are", res.data);
             setSearchResults(res.data);
+          })
+          .catch((e) => {
+            toast.error(
+              e.message ||
+                "Something went wrong getting places. Please try again"
+            );
           });
       }
     }, 900);

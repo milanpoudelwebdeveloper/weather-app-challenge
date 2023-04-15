@@ -4,6 +4,7 @@ import { axiosInstance } from "../../axiosConfig";
 import "./ExtendedForecast.css";
 import IconProvider from "./IconProvider";
 import { units } from "../../constants/weatherInfo";
+import { toast } from "react-toastify";
 
 const daysOfWeek = [
   "Sunday",
@@ -35,10 +36,10 @@ const ExtendedForecast = ({ locationKey, unit }) => {
         )
         .then((res) => {
           setExtendedForecast(res.data.DailyForecasts);
-          console.log(res.data.DailyForecasts);
         })
         .catch((e) => {
           console.log("something went wrong while getting data", e);
+          toast.error(e.message || "Something went wrong while getting places");
         });
     }
   }, [locationKey, responseType]);
