@@ -41,7 +41,7 @@ const NavBar = ({ changeUnit, selectedUnit }) => {
             );
           });
       }
-    }, 900);
+    }, 700);
   }, [input]);
 
   const closeSearchResults = () => {
