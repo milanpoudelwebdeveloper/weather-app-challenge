@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import SunInfo from "../components/SunInfo/SunInfo";
 import ExtendedForecast from "../components/ExtendedForecast/ExtendedForecast";
 import { useLocation } from "react-router";
 import { axiosInstance } from "../axiosConfig";
 import DetailCards from "../components/Details/DetailCards";
+import CountryInfo from "../components/SunInfo/CountryInfo";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const place = new URLSearchParams(useLocation().search).get("placeKey");
@@ -27,7 +28,7 @@ const Details = () => {
       const weatherData = weatherResponse.data;
       setWeatherData(weatherData[0]);
     } catch (error) {
-      console.error(error);
+      toast.error(error.message || "Something went wrong");
     }
   };
 
@@ -39,7 +40,7 @@ const Details = () => {
           <DetailCards weatherData={weatherData} />
           <ExtendedForecast locationKey={place} />
         </div>
-        <SunInfo weatherData={weatherData} placeName={placeName} />
+        <CountryInfo weatherData={weatherData} placeName={placeName} />
       </div>
     </div>
   );

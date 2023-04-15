@@ -1,12 +1,16 @@
 import NavBar from "../components/NavBar/NavBar";
 import WeatherInfo from "../components/WeatherInfo/WeatherInfo";
-import SunInfo from "../components/SunInfo/SunInfo";
+
 import ExtendedForecast from "../components/ExtendedForecast/ExtendedForecast";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../axiosConfig";
+import CountryInfo from "../components/SunInfo/CountryInfo";
+import { toast } from "react-toastify";
+import Spinner from "../components/Common/Spinner";
 
 const Home = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [locationKey, setLocationKey] = useState("");
   const [placeName, setPlaceName] = useState("Kathmandu");
   const location = {
@@ -17,10 +21,13 @@ const Home = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    getWeatherData(location.longitude, location.latitude);
-  }, [location]);
+    if (location?.latitude && location?.longitude) {
+      getWeatherData(location.longitude, location.latitude);
+    }
+  }, []);
 
   const getWeatherData = async (longitude = 0, latitude = 0) => {
+    setLoading(true);
     try {
       const locationResponse = await axiosInstance.get(
         `/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${latitude},${longitude}`
@@ -33,20 +40,23 @@ const Home = () => {
       );
       const weatherData = weatherResponse.data;
       setWeatherData(weatherData[0]);
+      setLoading(false);
     } catch (error) {
-      console.log(error);
+      toast.error(error.message || "Something went wrong");
+      setLoading(false);
     }
   };
 
   return (
     <div className="container">
       <NavBar />
+      {loading ? <Spinner /> : null}
       <div className="parentWrapper">
         <div>
           <WeatherInfo weatherData={weatherData} />
           <ExtendedForecast locationKey={locationKey} />
         </div>
-        <SunInfo weatherData={weatherData} placeName={placeName} />
+        <CountryInfo weatherData={weatherData} placeName={placeName} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { BsFillSunFill } from "react-icons/bs";
-import "./SunInfo.css";
+import "./CountryInfo.css";
 
 const UVInfo = ({ weatherData }) => {
   let uviValue = weatherData?.uvi?.toFixed(1) || 0;

@@ -7,31 +7,49 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [input, setInput] = useState("");
+  const [open, setOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+  const date = new Date();
+
+  const greetings = () => {
+    if (date.getHours() < 12) {
+      return "Good Morning";
+    } else if (date.getHours() < 18) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
       if (input.length > 0) {
+        setOpen(true);
         axiosInstance
-          .get(
-            `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=bKsUpZYLAYXff9qYXBAcIVEfIWvN8cZY&q=${input}`
-          )
+          .get(`/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${input}`)
           .then((res) => {
             console.log("the places list are", res.data);
             setSearchResults(res.data);
           });
       }
-    }, 700);
+    }, 900);
   }, [input]);
 
+  const closeSearchResults = () => {
+    setOpen(false);
+    setInput("");
+  };
+
   return (
-    <nav className="navContainer">
+    <nav className="navContainer" onClick={closeSearchResults}>
       <Link to="/">
         <div className="avatarContainer">
           <img src="images/avatar.webp" alt="avatar" className="avatarImg" />
           <p>
             <span>Hello,</span>
-            Good Morning
+            {greetings()}
           </p>
         </div>
       </Link>
@@ -44,7 +62,12 @@ const NavBar = () => {
           value={input}
         />
         <AiOutlineSearch color="#F97F29" size={20} />
-        {input && <SearchResults searchResults={searchResults} />}
+        {input && open && (
+          <SearchResults
+            searchResults={searchResults}
+            closeSearchResults={closeSearchResults}
+          />
+        )}
       </div>
     </nav>
   );

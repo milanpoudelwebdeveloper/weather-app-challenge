@@ -6,6 +6,8 @@
 
 .labelText {
   display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .infoCard {
@@ -17,16 +19,21 @@
   background-size: cover;
   background-position: top right;
   border-radius: 30px;
-  padding: 40px;
+  padding: 30px;
 }
 
 .infoCard h1 {
   margin-top: 30px;
-  font-size: 30px;
+  margin-bottom: 5px;
+  font-size: 25px;
+}
+
+.infoCard h4 {
+  margin-bottom: 5px;
 }
 
 .airInfo {
-  background-image: url("/images/wind.jpg");
+  background-image: url("/images/wind.avif");
 }
 
 .airInfo div:first-child {
@@ -63,7 +70,7 @@
 
 .infoContainer div {
   max-width: max-content;
-  padding: 16px 25px;
+  padding: 16px 20px;
   border-radius: 16px;
 }
 .pressure {
@@ -83,9 +90,12 @@
 
 .windInfo {
   background: white;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 20px;
   margin-top: 40px;
+  text-align: center;
+  width: max-content;
+  margin: 40px auto;
 }
 
 .windInfo p {

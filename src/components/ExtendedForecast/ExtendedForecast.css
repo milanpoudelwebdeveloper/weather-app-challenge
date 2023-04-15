@@ -1,7 +1,7 @@
 .extended-forecast {
   background: #f7f7f7;
   padding: 30px;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 20px;
 }
 
@@ -13,7 +13,29 @@
 }
 
 .forecast-items {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 80px;
   margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  margin: 16px 0px;
+}
+
+@media (max-width: 768px) {
+  .forecast-items {
+    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .forecast-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

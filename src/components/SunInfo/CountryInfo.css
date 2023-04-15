@@ -6,6 +6,7 @@
   justify-content: space-between;
   border-radius: 20px;
   padding: 20px;
+  height: max-content;
 }
 
 .place-name {

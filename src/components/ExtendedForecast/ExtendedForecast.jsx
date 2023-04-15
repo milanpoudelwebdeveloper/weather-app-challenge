@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { axiosInstance } from "../../axiosConfig";
 import "./ExtendedForecast.css";
+import IconProvider from "./IconProvider";
 
 const daysOfWeek = [
   "Sunday",
@@ -42,15 +43,13 @@ const ExtendedForecast = ({ locationKey }) => {
     <div className="extended-forecast">
       <h2>Extended Forecast</h2>
       <div className="forecast-items">
-        {extendedForecast.map((forecast, index) => {
+        {extendedForecast.slice(0, 4).map((forecast, index) => {
           return (
             <div key={index}>
-              <img
-                src={`https://developer.accuweather.com/sites/default/files/${forecast.Day.Icon}-s.png`}
-                alt="weather icon"
-              />
-              <h3>{getDay(forecast.Date)}</h3>
-              <p>{forecast.Temperature.Maximum.Value} C</p>
+              <IconProvider iconNumber={forecast?.Day?.Icon} />
+              <h3>{getDay(forecast?.Date)}</h3>
+              <p className="description">{forecast?.Day?.IconPhrase}</p>
+              <p>{forecast?.Temperature?.Maximum?.Value} &deg; C</p>
             </div>
           );
         })}

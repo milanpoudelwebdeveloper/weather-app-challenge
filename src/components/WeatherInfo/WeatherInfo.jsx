@@ -8,11 +8,11 @@ const WeatherInfo = ({ weatherData }) => {
         <div className="labelText">
           <img src="/images/sunny.svg" alt="sunny" />
           <div>
-            <p className="infoHead">Weather</p>
+            <h4 className="infoHead">Weather</h4>
             <p>What's the weather</p>
           </div>
         </div>
-        <h1>{weatherData?.Temperature["Metric"]?.Value} C</h1>
+        <h1>{weatherData?.Temperature["Metric"]?.Value}&deg; C</h1>
         <p>{weatherData?.WeatherText}</p>
         <div className="infoContainer">
           <div className="pressure">
@@ -34,10 +34,10 @@ const WeatherInfo = ({ weatherData }) => {
         </div>
       </div>
       <div className="infoCard airInfo">
-        <div>
+        <div className="labelText">
           <img src="/images/snow.svg" alt="wind" className="infoIcon" />
           <div>
-            <p className="infoHead">Air Info</p>
+            <h4 className="infoHead">Air Info</h4>
             <p
               style={{
                 color: "white",
@@ -48,7 +48,7 @@ const WeatherInfo = ({ weatherData }) => {
           </div>
         </div>
         <h1>{weatherData?.Wind?.Speed?.Metric?.Value} km/h</h1>
-        <p>{weatherData?.Wind?.Direction?.English} Direction</p>
+        <p>"{weatherData?.Wind?.Direction?.English}" Direction</p>
         <div className="windInfo">
           <p>Wind Gust: {weatherData?.WindGust?.Speed?.Metric?.Value} km/h</p>
         </div>
